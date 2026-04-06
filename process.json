@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "events-queue",
+      "script": "./app/queues/processQueues.js",
+      "exec_mode": "fork",
+      "instances": 1,
+      "autorestart": true,
+      "restart_delay": 5000,
+      "max_memory_restart": "500M",
+
+      "env": {
+        "NODE_ENV": "production"
+      },
+
+      "out_file": "/var/events/log/events-queue/out.log",
+      "error_file": "/var/events/log/events-queue/error.log",
+      "merge_logs": true,
+      "time": true
+    }
+  ]
+}

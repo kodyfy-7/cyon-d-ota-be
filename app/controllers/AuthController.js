@@ -88,6 +88,7 @@ exports.register = async (req, res) => {
                 userId: user.id,
                 parishId,
                 positionId,
+                isExco: Boolean(position.isExco),
                 gender,
                 dateOfBirth
             },
@@ -113,6 +114,7 @@ exports.register = async (req, res) => {
                     parishId: member.parishId,
                     positionId: member.positionId,
                     isSuper: member.isSuper,
+                    isExco: member.isExco,
                     gender: member.gender,
                     dateOfBirth: member.dateOfBirth
                 }
@@ -189,6 +191,7 @@ exports.login = async (req, res) => {
                         parishId: member.parishId,
                         positionId: member.positionId,
                         isSuper: member.isSuper,
+                        isExco: member.isExco,
                         position: member.position
                     }
                     : null

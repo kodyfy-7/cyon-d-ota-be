@@ -155,6 +155,7 @@ exports.createMember = async (req, res) => {
                 parishId,
                 positionId,
                 isSuper: Boolean(isSuper),
+                isExco: Boolean(position.isExco),
                 gender,
                 dateOfBirth
             },
@@ -217,6 +218,7 @@ exports.updateMember = async (req, res) => {
                 return res.status(404).json({ success: false, message: "Position not found" });
             }
             member.positionId = positionId;
+            member.isExco = Boolean(position.isExco);
         }
 
         if (typeof isSuper !== "undefined") member.isSuper = Boolean(isSuper);
@@ -290,6 +292,7 @@ exports.makeAdministrator = async (req, res) => {
 
         member.positionId = positionId;
         member.isSuper = Boolean(isSuper);
+        member.isExco = Boolean(position.isExco);
         await member.save();
 
         const updated = await Member.findOne({
@@ -381,6 +384,7 @@ exports.getMyProfile = async (req, res) => {
                     parishId: member.parishId,
                     positionId: member.positionId,
                     isSuper: member.isSuper,
+                    isExco: member.isExco,
                     gender: member.gender,
                     dateOfBirth: member.dateOfBirth,
                     createdAt: member.createdAt,

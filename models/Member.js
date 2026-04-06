@@ -34,6 +34,12 @@ const Member = postgresDb.define(
             defaultValue: false
         },
 
+        isExco: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+
         gender: {
             type: Sequelize.STRING,
             allowNull: false
@@ -51,6 +57,7 @@ const Member = postgresDb.define(
             { fields: ["parishId"] },
             { fields: ["positionId"] },
             { fields: ["isSuper"] },
+            { fields: ["isExco"] },
             { fields: ["gender"] },
             { fields: ["createdAt"] }
         ]
